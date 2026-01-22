@@ -116,6 +116,15 @@ To run the frontend unit and integration tests:
     ```
     This uses **Vitest** to run the test suite, which includes component tests (Buttons), service tests (API integration), and page-level integration tests (Dashboard).
 
+## Deployment Infrastructure
+
+The full-stack application is deployed using modern cloud platforms:
+
+-   **Frontend**: Deployed on **Vercel** for fast static asset delivery and edge network benefits.
+-   **Backend**: Deployed on **Render** (Free Tier).
+-   **Database**: Hosted on **Neon DB**, a serverless PostgreSQL platform, ensuring high availability and scalability.
+-   **Keep-Alive Strategy**: Since the Render Free Tier spins down inactivity, a cron-job service is configured to ping the backend health endpoint every 10 minutes. This prevents cold starts and ensures the API remains responsive.
+
 ## Assumptions & Design Decisions
 
 -   **Database**: The project is configured to use **Neon DB (PostgreSQL)** for production. For local testing, it defaults to **SQLite** if no database URL is provided or for simplicity in CI/CD pipelines.

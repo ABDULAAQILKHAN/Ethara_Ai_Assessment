@@ -34,8 +34,11 @@ This application demonstrates a full-stack architecture separating concerns betw
 ### Backend
 -   **FastAPI**: High-performance web framework for building APIs.
 -   **SQLModel**: Database interaction (ORM) built on top of SQLAlchemy and Pydantic.
--   **SQLite**: Lightweight, file-based relational database.
 -   **Pydantic**: Data validation and serialization.
+
+### Database
+-   **Neon DB (PostgreSQL)**: Serverless Postgres database used for the deployed application to ensure reliability and scalability.
+-   **SQLite**: Used for local development and testing for simplicity.
 
 ## Setup Instructions
 
@@ -117,9 +120,18 @@ To run the frontend unit and integration tests:
     \`\`\`
     This uses **Vitest** to run the test suite, which includes component tests (Buttons), service tests (API integration), and page-level integration tests (Dashboard).
 
+## Deployment Infrastructure
+
+The full-stack application is deployed using modern cloud platforms:
+
+-   **Frontend**: Deployed on **Vercel** for fast static asset delivery and edge network benefits.
+-   **Backend**: Deployed on **Render** (Free Tier).
+-   **Database**: Hosted on **Neon DB**, a serverless PostgreSQL platform, ensuring high availability and scalability.
+-   **Keep-Alive Strategy**: Since the Render Free Tier spins down inactivity, a cron-job service is configured to ping the backend health endpoint every 10 minutes. This prevents cold starts and ensures the API remains responsive.
+
 ## Assumptions & Design Decisions
 
--   **Database**: SQLite is used for simplicity and ease of local setup. It creates a \`database.db\` file in the \`backend\` folder automatically on startup.
+-   **Database**: The project is configured to use **Neon DB (PostgreSQL)** for production. For local testing, it defaults to **SQLite** if no database URL is provided or for simplicity in CI/CD pipelines.
 -   **Authentication**: No authentication is implemented for this version (open access).
 -   **Date Handling**: Dates are stored as \`YYYY-MM-DD\` strings or Date objects. Timezones are assumed to be local or UTC for simplicity.
 -   **Constraint**: An employee can only have one attendance record per day.
