@@ -11,6 +11,11 @@ This application demonstrates a full-stack architecture separating concerns betw
 -   **Data Filtration**: Filter attendance records by date range.
 -   **Dashboard Analytics**: View quick summaries of total employees and daily attendance.
 
+## Live Deployment
+
+-   **Frontend Application**: [https://ethara-ai-assessment.vercel.app/](https://ethara-ai-assessment.vercel.app/)
+-   **Backend API Docs**: [https://ethara-ai-assessment.onrender.com/docs](https://ethara-ai-assessment.onrender.com/docs)
+
 ## Tech Stack
 
 ### Frontend
