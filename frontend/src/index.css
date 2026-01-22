@@ -5,5 +5,7 @@
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }
