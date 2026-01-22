@@ -50,17 +50,23 @@ export default function EmployeeDetails() {
     const handleMarkAttendance = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        // Clear previous generic errors? Maybe. 
+        // But for attendance form, let's simple use alert or a toast for now as per previous code, 
+        // but with better message.
         try {
             // Update local optimistic UI or re-fetch
             const record = { employeeId: id, date, status };
             await api.addAttendance(record);
             
             // Refresh list
-            const updatedList = await api.getAttendance(id);
+            const updatedList = await api.getAttendance(id, startDate, endDate);
             setAttendance(updatedList);
-            
+            // Check if stats update needed
+            const updatedStats = await api.getEmployeeStats(id);
+            setStats(updatedStats);
+            alert("Attendance marked successfully!");
         } catch (err) {
-            alert('Failed to mark attendance');
+            alert(err.message || 'Failed to mark attendance');
         } finally {
             setIsSubmitting(false);
         }

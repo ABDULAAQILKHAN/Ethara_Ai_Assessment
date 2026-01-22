@@ -142,6 +142,9 @@ export const api = {
             };
         } catch (error) {
             console.error("Error recording attendance:", error);
+            if (error.response && error.response.data && error.response.data.detail) {
+                 throw new Error(error.response.data.detail);
+            }
             throw error;
         }
     }
