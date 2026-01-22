@@ -30,8 +30,11 @@ This application demonstrates a full-stack architecture separating concerns betw
 ### Backend
 -   **FastAPI**: High-performance web framework for building APIs.
 -   **SQLModel**: Database interaction (ORM) built on top of SQLAlchemy and Pydantic.
--   **SQLite**: Lightweight, file-based relational database.
 -   **Pydantic**: Data validation and serialization.
+
+### Database
+-   **Neon DB (PostgreSQL)**: Serverless Postgres database used for the deployed application to ensure reliability and scalability.
+-   **SQLite**: Used for local development and testing for simplicity.
 
 ## Setup Instructions
 
@@ -115,7 +118,7 @@ To run the frontend unit and integration tests:
 
 ## Assumptions & Design Decisions
 
--   **Database**: SQLite is used for simplicity and ease of local setup. It creates a `database.db` file in the `backend` folder automatically on startup.
+-   **Database**: The project is configured to use **Neon DB (PostgreSQL)** for production. For local testing, it defaults to **SQLite** if no database URL is provided or for simplicity in CI/CD pipelines.
 -   **Authentication**: No authentication is implemented for this version (open access).
 -   **Date Handling**: Dates are stored as `YYYY-MM-DD` strings or Date objects. Timezones are assumed to be local or UTC for simplicity.
 -   **Constraint**: An employee can only have one attendance record per day.
