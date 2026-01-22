@@ -6,6 +6,10 @@ from typing import List, Optional
 from contextlib import asynccontextmanager
 from datetime import date
 from sqlalchemy import func
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from database import create_db_and_tables, get_session
 from models import Employee, Attendance
@@ -21,7 +25,7 @@ app = FastAPI(lifespan=lifespan)
 # CORS Setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[os.getenv("FRONTEND_URL", "http://localhost:5173")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

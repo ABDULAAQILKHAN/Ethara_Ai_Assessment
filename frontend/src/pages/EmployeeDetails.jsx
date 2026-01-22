@@ -88,7 +88,7 @@ export default function EmployeeDetails() {
                 <div className="flex items-start justify-between">
                     <div className="flex items-center">
                         <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl font-bold">
-                            {employee.fullName.charAt(0)}
+                            {employee.fullName.charAt(0).toUpperCase()}
                         </div>
                         <div className="ml-4">
                             <h1 className="text-2xl font-bold text-gray-900">{employee.fullName}</h1>
@@ -148,7 +148,7 @@ export default function EmployeeDetails() {
                     <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 flex flex-col sm:flex-row justify-between items-center gap-4">
                         <h3 className="text-lg font-medium text-gray-900">Attendance History</h3>
                         <div className="flex gap-2 items-center">
-                            <span className="text-xs text-gray-500">Filter:</span>
+                            <span className="text-sm text-gray-500 pb-4">Filter:</span>
                             <Input 
                                 type="date" 
                                 value={startDate} 
@@ -167,7 +167,7 @@ export default function EmployeeDetails() {
                             {(startDate || endDate) && (
                                 <button 
                                     onClick={() => { setStartDate(''); setEndDate(''); }}
-                                    className="text-xs text-blue-600 hover:underline ml-2"
+                                    className="text-xs text-blue-600 hover:underline ml-2 pb-4"
                                 >
                                     Clear
                                 </button>
