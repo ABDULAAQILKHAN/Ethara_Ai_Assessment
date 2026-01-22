@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 import { api } from '../services/api';
 import { Button } from '../components/ui/Button';
 import Loader from '../components/ui/Loader';
-import { Trash2, Eye, UserPlus, CheckCircle } from 'lucide-react';
+import { Trash2, Eye, UserPlus } from 'lucide-react';
 
 export default function Dashboard() {
     const [employees, setEmployees] = useState([]);
-    const [stats, setStats] = useState({ total_employees: 0, present_today: 0 });
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [deletingId, setDeletingId] = useState(null);
@@ -15,12 +14,8 @@ export default function Dashboard() {
     const fetchEmployees = async () => {
         try {
             setLoading(true);
-            const [empData, statsData] = await Promise.all([
-                 api.getEmployees(),
-                 api.getDashboardStats()
-            ]);
-            setEmployees(empData);
-            setStats(statsData);
+            const data = await api.getEmployees();
+            setEmployees(data);
             setError(null);
         } catch (err) {
             console.error(err);
@@ -67,27 +62,6 @@ export default function Dashboard() {
                         Add New Employee
                     </Button>
                 </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-center">
-                    <div className="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
-                        <UserPlus className="w-8 h-8" /> 
-                    </div>
-                    <div>
-                        <p className="text-sm text-gray-500 font-medium">Total Employees</p>
-                        <p className="text-2xl font-bold text-gray-900">{stats.total_employees}</p>
-                    </div>
-                </div>
-                <div className="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-center">
-                    <div className="p-3 rounded-full bg-green-100 text-green-600 mr-4">
-                        <CheckCircle className="w-8 h-8" />
-                    </div>
-                    <div>
-                        <p className="text-sm text-gray-500 font-medium">Present Today</p>
-                        <p className="text-2xl font-bold text-gray-900">{stats.present_today}</p>
-                    </div>
-                </div>
             </div>
 
             {employees.length === 0 ? (

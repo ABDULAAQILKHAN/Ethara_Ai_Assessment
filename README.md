@@ -19,6 +19,8 @@ This application demonstrates a full-stack architecture separating concerns betw
 -   **Tailwind CSS**: Utility-first CSS framework for styling.
 -   **Lucide React**: Icon set.
 -   **Axios**: HTTP client for API requests.
+-   **Vitest**: Blazing fast unit test framework.
+-   **React Testing Library**: Testing utilities for React components.
 
 ### Backend
 -   **FastAPI**: High-performance web framework for building APIs.
@@ -79,6 +81,8 @@ This application demonstrates a full-stack architecture separating concerns betw
 
 ## Testing
 
+### Backend Tests
+
 To run the backend integration tests:
 
 1.  Ensure you have `pytest` and `httpx` (or `requests`) installed.
@@ -89,6 +93,20 @@ To run the backend integration tests:
     ```bash
     pytest
     ```
+
+### Frontend Tests
+
+To run the frontend unit and integration tests:
+
+1.  Navigate to the `frontend` directory:
+    ```bash
+    cd frontend
+    ```
+2.  Run the tests using npm:
+    ```bash
+    npm test
+    ```
+    This uses **Vitest** to run the test suite, which includes component tests (Buttons), service tests (API integration), and page-level integration tests (Dashboard).
 
 ## Assumptions & Design Decisions
 

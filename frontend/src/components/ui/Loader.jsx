@@ -9,7 +9,7 @@ export default function Loader({ size = 'medium', className = '' }) {
     };
 
     return (
-        <div className={`flex justify-center items-center p-4 ${className}`}>
+        <div className={`flex justify-center items-center p-4 ${className}`} data-testid="loader">
             <Loader2 className={`animate-spin text-blue-600 ${sizeClasses[size]}`} />
         </div>
     );
