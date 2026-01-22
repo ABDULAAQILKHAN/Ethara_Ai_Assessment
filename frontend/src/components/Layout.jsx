@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Users, UserPlus, LayoutDashboard } from 'lucide-react';
+import { Users, UserPlus, LayoutDashboard, FileText } from 'lucide-react';
 
 export default function Layout() {
     return (
@@ -48,6 +48,19 @@ export default function Layout() {
                                 >
                                     <UserPlus className="w-4 h-4 mr-2" />
                                     Add Employee
+                                </NavLink>
+                                <NavLink
+                                    to="/readme"
+                                    className={({ isActive }) =>
+                                        `inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
+                                            isActive
+                                                ? 'border-blue-500 text-gray-900'
+                                                : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                                        }`
+                                    }
+                                >
+                                    <FileText className="w-4 h-4 mr-2" />
+                                    Readme
                                 </NavLink>
                             </div>
                         </div>

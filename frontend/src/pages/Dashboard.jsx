@@ -71,7 +71,7 @@ export default function Dashboard() {
                     </div>
                     <h3 className="mt-2 text-sm font-medium text-gray-900">No employees</h3>
                     <p className="mt-1 text-sm text-gray-500">Get started by creating a new employee.</p>
-                    <div className="mt-6">
+                    <div className="mt-6 flex flex-row justify-center">
                         <Link to="/add-employee">
                             <Button variant="primary">Add Employee</Button>
                         </Link>

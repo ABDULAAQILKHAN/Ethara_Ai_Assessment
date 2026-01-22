@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import AddEmployee from './pages/AddEmployee';
 import EmployeeDetails from './pages/EmployeeDetails';
+import Readme from './pages/Readme';
 import NotFound from './pages/NotFound';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -16,6 +17,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="add-employee" element={<AddEmployee />} />
             <Route path="employee/:id" element={<EmployeeDetails />} />
+            <Route path="readme" element={<Readme />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
